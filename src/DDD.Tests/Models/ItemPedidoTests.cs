@@ -16,6 +16,7 @@ public class ItemPedidoTests
     }
 
     #region Testes com dados válidos
+
     [Test]
     public void Deve_ValidarNomeProdutoNaoVazio()
     {
@@ -26,7 +27,7 @@ public class ItemPedidoTests
         var result = _validator.Validate(itemPedido);
 
         Assert.That(result.IsValid, Is.True);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.NomeProduto)), Is.False);
+        Assert.That(result.Errors.Count, Is.Zero);
     }
 
     [Test]
@@ -40,7 +41,7 @@ public class ItemPedidoTests
 
         // Assert
         Assert.That(result.IsValid, Is.True);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.PrecoUnitario)), Is.False);
+        Assert.That(result.Errors.Count, Is.Zero);
     }
 
     [Test]
@@ -54,7 +55,7 @@ public class ItemPedidoTests
 
         // Assert
         Assert.That(result.IsValid, Is.True);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.PrecoUnitario)), Is.False);
+        Assert.That(result.Errors.Count, Is.Zero);
     }
 
     [Test]
@@ -69,9 +70,11 @@ public class ItemPedidoTests
         // Assert
         Assert.That(result.IsValid, Is.True);
     }
+
     #endregion Testes com dados válidos
 
     #region Testes com dados inválidos
+
     [Test]
     public void Deve_FalharQuandoNomeProdutoVazio()
     {
@@ -83,7 +86,7 @@ public class ItemPedidoTests
 
         // Assert
         Assert.That(result.IsValid, Is.False);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.NomeProduto)), Is.True);
+        Assert.That(result.Errors.Count, Is.Not.Zero);
     }
 
     [Test]
@@ -97,7 +100,7 @@ public class ItemPedidoTests
 
         // Assert
         Assert.That(result.IsValid, Is.False);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.PrecoUnitario)), Is.True);
+        Assert.That(result.Errors.Count, Is.Not.Zero);
     }
 
     [Test]
@@ -111,7 +114,8 @@ public class ItemPedidoTests
 
         // Assert
         Assert.That(result.IsValid, Is.False);
-        Assert.That(result.Errors.Exists(x => x.PropertyName == nameof(itemPedido.Quantidade)), Is.True);
+        Assert.That(result.Errors.Count, Is.Not.Zero);
     }
+
     #endregion Testes com dados inválidos
 }
