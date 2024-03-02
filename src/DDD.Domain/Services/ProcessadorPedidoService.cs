@@ -1,6 +1,6 @@
-﻿using DDD.Domain.Services.Interfaces;
+﻿using DDD.Domain.Models;
+using DDD.Domain.Services.Interfaces;
 using DDD.Infrastructure.Repositories.Interfaces;
-using DDD.Models.Models;
 
 namespace DDD.Domain.Services;
 

@@ -1,4 +1,4 @@
-﻿using DDD.Models.Models;
+﻿using DDD.Domain.Models;
 
 namespace DDD.Domain.Services.Interfaces;
 
