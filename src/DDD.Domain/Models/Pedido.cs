@@ -9,8 +9,8 @@ public class Pedido : BaseModel
         Itens = itens;
     }
 
-    public int Id { get; set; }
-    public DateTime DataPedido { get; set; }
-    public List<ItemPedido> Itens { get; set; }
+    public int Id { get; protected set; }
+    public DateTime DataPedido { get; private set; }
+    public List<ItemPedido> Itens { get; private set; }
     public decimal Total => Itens.Sum(item => item.Quantidade * item.PrecoUnitario);
 }

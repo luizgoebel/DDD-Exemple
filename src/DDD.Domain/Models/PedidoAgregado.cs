@@ -8,6 +8,6 @@ public class PedidoAgregado
         Itens = itens.Any() ? itens : [];
     }
 
-    public Pedido Pedido { get; set; }
-    public List<ItemPedido> Itens { get; set; }
+    public Pedido Pedido { get; private set; }
+    public List<ItemPedido> Itens { get; private set; }
 }
