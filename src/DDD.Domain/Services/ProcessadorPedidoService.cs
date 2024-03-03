@@ -1,4 +1,5 @@
-﻿using DDD.Domain.Models;
+﻿using DDD.Domain.Exceptions;
+using DDD.Domain.Models;
 using DDD.Domain.Services.Interfaces;
 using DDD.Infrastructure.Repositories.Interfaces;
 
@@ -15,6 +16,19 @@ public class ProcessadorPedidoService : IProcessadorPedidoService
 
     public void ProcessarPedido(Pedido pedido)
     {
-        _pedidoRepository.Salvar(pedido);
+        try
+        {
+            if (pedido is null) throw new ServiceException("Pedido não pode ser nulo.");
+
+            _pedidoRepository.Salvar(pedido);
+        }
+        catch (ServiceException)
+        {
+            throw new ServiceException("Ocorreu um erro ao processar o pedido.");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 }
